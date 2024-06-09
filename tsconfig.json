@@ -9,8 +9,16 @@
     }
   },
   "include": [
-    "**/*.ts",
-    "**/*.tsx",
+    "app/**/*.js",
+    "app/components/Footer.js",
+    "app/components/Header.js",
+    "app/navigation/AppNavigator.js",
+    "app/screens/AccountCreationScreen.js",
+    "app/screens/CheckItemScreen.js",
+    "app/screens/HomeScreen.js",
+    "app/screens/PaymentScreen.js",
+    "app/screens/TrackItemScreen.js",
+    "app/styles/styles.js",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
   ]
