@@ -6,40 +6,33 @@ import Footer from '../components/Footer';
 
 const baseURL = 'http://192.168.207.80:5000';
 
-const AccountCreationScreen = ({ navigation }) => {
-  const [name, setName] = useState('');
+const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
 
-  const handleCreateAccount = async () => {
-    if (!name || !email || !phone || !password) {
+  const handleLogin = async () => {
+    if (!email || !password) {
       Alert.alert('Error', 'Please fill in all fields.');
-      return;
-    }
-
-    if (password.length < 8) {
-      Alert.alert('Error', 'Password must be at least 8 characters long.');
       return;
     }
 
     setIsLoading(true);
 
     try {
-      const response = await axios.post(`${baseURL}/api/account`, {
-        id: Date.now().toString(),
-        name,
-        email,
-        phone,
-        password,
-      });
-      Alert.alert('Success', response.data.message);
-      navigation.navigate('Login');
+      const response = await axios.post(`${baseURL}/api/authenticate`, { email, password });
+      const { token, message } = response.data;
+
+      if (token) {
+        Alert.alert('Success', 'Login successful!');
+        navigation.navigate('Home');
+      } else {
+        Alert.alert('Error', message);
+      }
     } catch (error) {
       console.error(error);
-      Alert.alert('Error', 'Failed to create account.');
+      Alert.alert('Error', 'Failed to login.');
     } finally {
       setIsLoading(false);
     }
@@ -47,18 +40,10 @@ const AccountCreationScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Header title="Create Account" navigation={navigation} />
+      <Header title="Login" navigation={navigation} />
       <ScrollView contentContainerStyle={styles.content}>
         <View style={styles.innerContent}>
-          <Text style={styles.header}>Create Account</Text>
-          <TextInput
-            style={[styles.input, isFocused && styles.inputFocused]}
-            placeholder="Name"
-            value={name}
-            onChangeText={setName}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
-          />
+          <Text style={styles.header}>Login</Text>
           <TextInput
             style={[styles.input, isFocused && styles.inputFocused]}
             placeholder="Email"
@@ -70,15 +55,6 @@ const AccountCreationScreen = ({ navigation }) => {
           />
           <TextInput
             style={[styles.input, isFocused && styles.inputFocused]}
-            placeholder="Phone"
-            value={phone}
-            onChangeText={setPhone}
-            onFocus={() => setIsFocused(true)}
-            onBlur={() => setIsFocused(false)}
-            keyboardType="phone-pad"
-          />
-          <TextInput
-            style={[styles.input, isFocused && styles.inputFocused]}
             placeholder="Password"
             value={password}
             onChangeText={setPassword}
@@ -86,7 +62,7 @@ const AccountCreationScreen = ({ navigation }) => {
             onBlur={() => setIsFocused(false)}
             secureTextEntry
           />
-          <Button title="Create Account" onPress={handleCreateAccount} />
+          <Button title="Login" onPress={handleLogin} />
           {isLoading && <ActivityIndicator size="large" color="#0000ff" />}
         </View>
       </ScrollView>
@@ -140,4 +116,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AccountCreationScreen;
+export default LoginScreen;
