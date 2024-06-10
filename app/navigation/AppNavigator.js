@@ -2,10 +2,11 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from '../screens/HomeScreen';
-import AccountCreationScreen from '../screens/AccountCreationScreen';
+import SignUpScreen from '../screens/SignUpScreen';
 import PaymentInquiryScreen from '../screens/PaymentInquiryScreen';
 import TrackItemScreen from '../screens/TrackItemScreen';
 import CheckItemScreen from '../screens/CheckItemScreen';
+import LoginScreen from '../screens/LoginScreen';
 
 import NotFoundPage from '../screens/NotFoundPage';
 
@@ -16,10 +17,11 @@ function AppNavigator() {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="AccountCreation" component={AccountCreationScreen} />
-        <Stack.Screen name="PaymentInquiry" component={PaymentInquiryScreen} />
-        <Stack.Screen name="TrackItem" component={TrackItemScreen} />
-        <Stack.Screen name="CheckItem" component={CheckItemScreen} />
+        <Stack.Screen name="Signup" component={SignUpScreen} />
+        <Stack.Screen name="Inquire Your Yayment" component={PaymentInquiryScreen} />
+        <Stack.Screen name="Track Your Item" component={TrackItemScreen} />
+        <Stack.Screen name="Check Your Item" component={CheckItemScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
         
         <Stack.Screen name="NotFound" component={NotFoundPage} />
       </Stack.Navigator>

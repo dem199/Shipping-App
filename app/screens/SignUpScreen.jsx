@@ -6,7 +6,7 @@ import Footer from '../components/Footer';
 
 const baseURL = 'http://192.168.207.80:5000';
 
-const AccountCreationScreen = ({ navigation }) => {
+const SignUp = ({ navigation }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -140,4 +140,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AccountCreationScreen;
+export default SignUp;

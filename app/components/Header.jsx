@@ -19,7 +19,7 @@ const Header = ({ title, navigation }) => {
           <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Home')}>
             <Text style={styles.navButtonText}>Home</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('AccountCreation')}>
+          <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Signup')}>
             <Text style={styles.navButtonText}>Create Account</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('PaymentInquiry')}>
