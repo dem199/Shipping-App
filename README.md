@@ -36,11 +36,11 @@ Before you begin, ensure you have met the following requirements:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/Shipping-App.git
+   git clone https://github.com/dem199/Shipping-App
    ```
 2. Navigate to the frontend directory:
    ```bash
-   cd Shipping-App/frontend
+   cd Shipping-App/
    ```
 3. Install dependencies:
    ```bash
